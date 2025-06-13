@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html style="font-family: Arial, Helvetica, sans-serif">
+
+<head>
+    <style>
+        button {
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+        }
+        .sombra {
+            /*width: 300px;
+            height: 200px;*/
+            background-color: #ffffff;
+            border: 0px solid #000000;
+            border-collapse: collapse;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            /* X, Y, blur, cor */
+            padding: 20px;
+            margin: 50px auto;
+        }
+
+        table {
+            border-radius: 16px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            border-radius: 16px;
+            border-collapse: collapse;
+            padding: 5px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sombra" style="margin-top: 10px;">
+        <table>
+            <thead>
+                <tr style="font-weight: bold;">
+                    <th>Linha</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Atualizado em: 12/06/2025</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Código OACI</td>
+                    <td>CIAD</td>
+                    <td>Nome</td>
+                    <td>Município</td>
+                    <td>UF</td>
+                    <td>Município Servido</td>
+                    <td>UF Servido</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>SDZG</td>
+                    <td>CE0008</td>
+                    <td>Pedro Teixeira</td>
+                    <td>TAUÁ</td>
+                    <td>Ceará</td>
+                    <td>TAUÁ</td>
+                    <td>Ceará</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <button><span><u>N</u></span>ova...</button>
+        <button><span><u>E</u></span>ditar...</button>
+        <button><span><u>R</u></span>enomear</button>
+        <button>E<span><u>x</u></span>cluir</button>
+        <button>Ex<span><u>p</u></span>ortar...</button>
+    </div>
+    <div class="sombra" style="display: flex; margin-top: -30px;">
+        <fieldset style="width: 20%;">
+            <legend><b>Ações:</b></legend>
+            <div>
+                <div>Alterar uso de maiúsculas e minúsculas</div>
+                <div>Compactar caracteres repetidos</div>
+                <div>Copiar valor da linha anterior</div>
+                <div>Extrair parte usando separador</div>
+                <div>Extrair texto usando largura fixa</div>
+                <div>Incluir prefixo</div>
+                <div>Incluir sufixo</div>
+                <div>Localizar e substituir texto</div>
+                <div>Prefixo com outra coluna</div>
+                <div>Remover caracteres</div>
+                <div>Remover prefixo
+                </div>
+                <div>Substituir
+                    a partir de
+                    arquivo de
+                    texto</div>
+                <div>
+                    Substituir
+                    valor
+                </div>
+                <div>
+                    Sufixo
+                    com
+                    outra
+                    coluna
+                </div>
+                <div>
+                    Suprimir
+                    caracteres
+                </div>
+            </div>
+        </fieldset>
+        <fieldset style="width: 20%;">
+            <legend><b>Ações aplicadas:</b></legend>
+            <div>Alterar uso de maiúsculas e minúsculas</div>
+        </fieldset>
+        <fieldset style="width: 60%;">
+            <legend><b>Alterar o uso de maiúsculas e minúsculas</b></legend>
+            <div>
+                <div>
+                <input 
+                    type="radio" 
+                    id="alterar_maiusculas_minusculas_minusculas" 
+                    name="case"
+                    value="minusculas">Alterar para minúsculas
+                </input>
+                </div>
+                <div>
+                    <input 
+                        type="radio" 
+                        id="alterar_maiusculas_minusculas_maiusculas" 
+                        name="case"
+                        value="maiusculas">Alterar para MAIÚSCULAS
+                    </input>
+                </div>
+                <div>
+                    <input 
+                        type="radio" 
+                        id="alterar_maiusculas_iniciais" 
+                        name="case"
+                        value="alterar_maiusculas_iniciais">Alterar para 'Letras MAIÚSCULAS iniciais'
+                    </input>
+                </div>
+                <div>
+                    <input 
+                        type="radio" 
+                        id="alternar_maiusculas_minusculas"
+                        name="case"
+                        value="alternar_maiusculas_minusculas">Alternar MAIÚSCULAS e minúsculas
+                    </input>
+                </div>
+                <br>
+                <div>Aplicar somente quando as seguintes condições forem atendidas:</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 65%;">Condição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <select name="conditions" id="conditions" style="width: 100%;">
+                                    <option value="contem">Contém</option>
+                                    <option value="nao_contem">Não contém</option>
+                                    <option value="nao_termina_com">Não termina com</option>
+                                    <option value="nao_inicia_com">Não inicia com</option>
+                                    <option value="termina_com">Termina com</option>
+                                    <option value="esta_vazio">Está vazio</option>
+                                    <option value="nao_esta_vazio">Não está vazio</option>
+                                    <option value="comprimento_igual_a">Comprimento igual a</option>
+                                    <option value="comprimento_maior_que">Comprimento maior que</option>
+                                    <option value="comprimento_menor_que">Comprimento menor que</option>
+                                    <option value="expressao_regular">Expressão regular</option>
+                                    <option value="inicia_com">Inicia com</option>
+                                </select>
+                            </th>
+                            <td>xyz</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </div>
+</body>
+
+</html>
