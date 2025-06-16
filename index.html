@@ -3,6 +3,43 @@
 
 <head>
     <style>
+        html,
+        body {
+            height: 100%;
+            margin: 5px;
+            overflow-y: hidden;
+            /* ⬅ oculta a barra de rolagem vertical */
+        }
+
+        .container-sombra-flex {
+            display: flex;
+            height: 50%;
+            /* ou 100vh ou o valor que quiser */
+        }
+
+        .acoes-disponiveis {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acoes-disponiveis fieldset {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acoes-disponiveis div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acoes-disponiveis select {
+            flex: 1;
+            width: 100%;
+        }
+
         button {
             background-color: blue;
             color: white;
@@ -10,16 +47,17 @@
             border: none;
             padding: 5px;
         }
+
         .sombra {
             /*width: 300px;
             height: 200px;*/
             background-color: #ffffff;
             border: 0px solid #000000;
             border-collapse: collapse;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
             /* X, Y, blur, cor */
             padding: 20px;
-            margin: 50px auto;
+            margin: 0px 10px 50px auto;
         }
 
         table {
@@ -29,6 +67,27 @@
             width: 100%
         }
 
+        .tabela-condicoes {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .tabela-condicoes thead,
+        .tabela-condicoes tbody,
+        .tabela-condicoes tr,
+        .tabela-condicoes td,
+        .tabela-condicoes th,
+
+        .tabela-condicoes-wrapper {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        /*
+        .tabela-condicoes thead {
+            display: block;
+            background-color: white;
+        }
+        */
         th,
         td {
             border: 1px solid black;
@@ -89,112 +148,217 @@
         <button>E<span><u>x</u></span>cluir</button>
         <button>Ex<span><u>p</u></span>ortar...</button>
     </div>
-    <div class="sombra" style="display: flex; margin-top: -30px;">
-        <fieldset style="width: 20%;">
+    <div class="sombra container-sombra-flex" style="margin-top: -30px;">
+        <fieldset class="acoes-disponiveis">
             <legend><b>Ações:</b></legend>
-            <div>
-                <div>Alterar uso de maiúsculas e minúsculas</div>
-                <div>Compactar caracteres repetidos</div>
-                <div>Copiar valor da linha anterior</div>
-                <div>Extrair parte usando separador</div>
-                <div>Extrair texto usando largura fixa</div>
-                <div>Incluir prefixo</div>
-                <div>Incluir sufixo</div>
-                <div>Localizar e substituir texto</div>
-                <div>Prefixo com outra coluna</div>
-                <div>Remover caracteres</div>
-                <div>Remover prefixo
-                </div>
-                <div>Substituir
-                    a partir de
-                    arquivo de
-                    texto</div>
+            <fieldset>
+                <legend><b>Ações disponíveis:</b></legend>
                 <div>
-                    Substituir
-                    valor
+                    <select name="languages" id="lang" size="4">
+                        <option value="alterar_uso_maiuscula_minuscula">Alterar uso de maiúsculas e minúsculas</option>
+                        <option value="compactar_caracter_repetido">Compactar caracteres repetidos</option>
+                        <option value="copiar_valor_linha_anterior">Copiar valor da linha anterior</option>
+                        <option value="extrair_parte_usando_separador">Extrair parte usando o separador</option>
+                        <option value="extrair_texto_usando_largura_fixa">Extrair texto usando larguras fixas</option>
+                        <option value="incluir_prefixo">Incluir prefixo</option>
+                        <option value="incluir_sufixo">Incluir sufixo</option>
+                        <option value="localizar_substituir_texto">Localizar e substituir texto</option>
+                        <option value="prefixo_outra_coluna">Prefixo com outra coluna</option>
+                        <option value="remover_caracter">Remover caracteres</option>
+                        <option value="remover_prefixo">Remover prefixo</option>
+                        <option value="remover_sufixo">Remover sufixo</option>
+                        <option value="substituir_arquivo">Substituir a partir de arquivo</option>
+                        <option value="substituir_valor">Substituir valor</option>
+                        <option value="sufixo_outra_coluna">Sufixo com outra coluna</option>
+                        <option value="suprimir_caracter">Suprimir caracteres</option>
+                    </select>
                 </div>
-                <div>
-                    Sufixo
-                    com
-                    outra
-                    coluna
-                </div>
-                <div>
-                    Suprimir
-                    caracteres
-                </div>
-            </div>
+            </fieldset>
         </fieldset>
-        <fieldset style="width: 20%;">
+
+        <fieldset class="acoes-disponiveis">
             <legend><b>Ações aplicadas:</b></legend>
-            <div>Alterar uso de maiúsculas e minúsculas</div>
+            <div>
+                <select name="languages" id="lang" size="4">
+                    <option value="alterar_uso_maiuscula_minuscula">Alterar uso de maiúsculas e minúsculas</option>
+                </select>
+            </div>
         </fieldset>
         <fieldset style="width: 60%;">
             <legend><b>Alterar o uso de maiúsculas e minúsculas</b></legend>
             <div>
                 <div>
-                <input 
-                    type="radio" 
-                    id="alterar_maiusculas_minusculas_minusculas" 
-                    name="case"
-                    value="minusculas">Alterar para minúsculas
-                </input>
+                    <input type="radio" id="alterar_maiusculas_minusculas_minusculas" name="case"
+                        value="minusculas">Alterar para minúsculas
+                    </input>
                 </div>
                 <div>
-                    <input 
-                        type="radio" 
-                        id="alterar_maiusculas_minusculas_maiusculas" 
-                        name="case"
+                    <input type="radio" id="alterar_maiusculas_minusculas_maiusculas" name="case"
                         value="maiusculas">Alterar para MAIÚSCULAS
                     </input>
                 </div>
                 <div>
-                    <input 
-                        type="radio" 
-                        id="alterar_maiusculas_iniciais" 
-                        name="case"
+                    <input type="radio" id="alterar_maiusculas_iniciais" name="case"
                         value="alterar_maiusculas_iniciais">Alterar para 'Letras MAIÚSCULAS iniciais'
                     </input>
                 </div>
                 <div>
-                    <input 
-                        type="radio" 
-                        id="alternar_maiusculas_minusculas"
-                        name="case"
+                    <input type="radio" id="alternar_maiusculas_minusculas" name="case"
                         value="alternar_maiusculas_minusculas">Alternar MAIÚSCULAS e minúsculas
                     </input>
                 </div>
                 <br>
                 <div>Aplicar somente quando as seguintes condições forem atendidas:</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 65%;">Condição</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <select name="conditions" id="conditions" style="width: 100%;">
-                                    <option value="contem">Contém</option>
-                                    <option value="nao_contem">Não contém</option>
-                                    <option value="nao_termina_com">Não termina com</option>
-                                    <option value="nao_inicia_com">Não inicia com</option>
-                                    <option value="termina_com">Termina com</option>
-                                    <option value="esta_vazio">Está vazio</option>
-                                    <option value="nao_esta_vazio">Não está vazio</option>
-                                    <option value="comprimento_igual_a">Comprimento igual a</option>
-                                    <option value="comprimento_maior_que">Comprimento maior que</option>
-                                    <option value="comprimento_menor_que">Comprimento menor que</option>
-                                    <option value="expressao_regular">Expressão regular</option>
-                                    <option value="inicia_com">Inicia com</option>
-                                </select>
-                            </th>
-                            <td>xyz</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tabela-condicoes tabela-condicoes-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 65%;">Condição</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+
+
+
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <select name="conditions" id="conditions" style="width: 100%;">
+                                        <option value="contem">Contém</option>
+                                        <option value="nao_contem">Não contém</option>
+                                        <option value="nao_termina_com">Não termina com</option>
+                                        <option value="nao_inicia_com">Não inicia com</option>
+                                        <option value="termina_com">Termina com</option>
+                                        <option value="esta_vazio">Está vazio</option>
+                                        <option value="nao_esta_vazio">Não está vazio</option>
+                                        <option value="comprimento_igual_a">Comprimento igual a</option>
+                                        <option value="comprimento_maior_que">Comprimento maior que</option>
+                                        <option value="comprimento_menor_que">Comprimento menor que</option>
+                                        <option value="expressao_regular">Expressão regular</option>
+                                        <option value="inicia_com">Inicia com</option>
+                                    </select>
+                                </th>
+                                <td>xyz</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div><input type="checkbox">Parar o processamento de ações subsequentes quando as condições forem
+                    atentidas.</div>
             </div>
         </fieldset>
     </div>
